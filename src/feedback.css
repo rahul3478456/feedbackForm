@@ -1,0 +1,41 @@
+
+button {
+	background-color: #ffc107; cursor:pointer; border: 1px solid #ffc107; color: white; border-radius: 15%
+
+}
+button:hover {
+	border: 3px dotted #ffc107;
+	color: #3a7999;
+	background: rgba(0,0,0,0);
+}
+
+h1 {
+  display: inline-block;
+  padding: 0 15px;
+  position: relative;
+  color:#8dc4ce;
+}
+
+h1:before,
+h1:after {
+  background: #ddd;
+  content: "";
+  display: block;
+  height: 1.6px;
+  position: absolute;
+    top: 50%;
+  width: 400%;
+}
+h1:before {
+  right: 100%;
+}
+h1:after {
+  left: 100%;
+}
+.container {
+  overflow: hidden;
+ 
+}
+.required{
+      color:red;
+}

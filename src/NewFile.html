@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<LINK REL=StyleSheet
+	HREF="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	TYPE="text/css" MEDIA=screen>
+<title>Feedback Form</title>
+<LINK REL=StyleSheet HREF="feedback.css" TYPE="text/css" MEDIA=screen>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="Controller.js"></script>
+</head>
+
+<body ng-app="myApp">
+	<br>
+	<br>
+	<center>
+		<h1>
+			<span>Feedback Form</span>
+		</h1>
+	</center>
+	<div class="jumbotron container alert alert-light"
+		ng-controller="appController">
+
+
+
+		<div>
+			<div class="alert alert-info">
+				<span><center>
+						<h5>Rate your visit</h5>
+					</center></span>
+
+				<center>
+					<div star-rating rating="starRating1" read-only="false"
+						max-rating="5" click="click1(param)"
+						mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)"></div>
+					<span ng-show="starRating1==5" class="badge badge-success">{{ratings[5]}}</span><span
+						ng-show="starRating1==4" class="badge badge-success">{{ratings[4]}}</span><span
+						ng-show="starRating1==3" class="badge badge-warning">{{ratings[3]}}</span><span
+						ng-show="starRating1==2" class="badge badge-danger">{{ratings[2]}}</span><span
+						ng-show="starRating1==1" class="badge badge-danger">{{ratings[1]}}</span>
+					<div>
+						<span ng-show="starRating1 != 0" class="badge badge-success">Your
+							rating has been recorded</span>
+						<!--<span class="label label-primary">Star Rating: {{starRating1}}</span>
+ <span class="label label-primary">Hover Rating: {{hoverRating1}}</span>-->
+
+					</div>
+				</center>
+			</div>
+
+			<div class="alert alert-info">
+				<span><center>
+						<h5>Review your visit</h5>
+					</center></span>
+				<form>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Name</label> <input
+							type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="Your name here">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Email address</label> <input
+							type="email" class="form-control" id="exampleFormControlInput1"
+							placeholder="name@example.com">
+					</div>
+
+
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1">Your review</label><span
+							class="required">*</span>
+						<textarea ng-model="mandatory" class="form-control"
+							id="exampleFormControlTextarea1"
+							placeholder="Tell us about your visit" rows="3" required></textarea>
+					</div>
+					<button type="submit" ng-click="submit()">Submit</button>
+					<button type="button">Skip</button>
+				</form>
+			</div>
+
+		</div>
+</body>
+</html>
