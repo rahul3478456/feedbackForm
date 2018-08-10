@@ -25,7 +25,7 @@
 <script src="Controller.js"></script>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="myApp"> <!-- This line bootstraps angular js application with the myApp module which we have created in Controller.js-->
 	<br>
 	<br>
 	<center>
@@ -34,7 +34,7 @@
 		</h1>
 	</center>
 	<div class="jumbotron container alert alert-light"
-		ng-controller="appController">
+		ng-controller="appController">   <!-- This line passes control of this div to the appController -->
 
 
 
@@ -56,8 +56,6 @@
 					<div>
 						<span ng-show="starRating1 != 0" class="badge badge-success">Your
 							rating has been recorded</span>
-						<!--<span class="label label-primary">Star Rating: {{starRating1}}</span>
- <span class="label label-primary">Hover Rating: {{hoverRating1}}</span>-->
 
 					</div>
 				</center>
