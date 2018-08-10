@@ -6,6 +6,12 @@ var app = angular.module('myApp', []);
 // With the help of the module created in the above step we have created a controller function which will control the div assigned to it.
 app.controller('appController', ['$scope','$http', function ($scope,$http) {
 	
+	//this is to store the review content
+	$scope.review={	
+		name:"",
+		email:"",
+		reviewDescription:"" };
+	
 	//this is used to store the selected rating
     $scope.starRating1 = 0;
     
@@ -15,7 +21,6 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
 	//this post request gets the data according to which ratings needs to be recorded
 	$http.get('https://www.naviadoctors.com/visit_feedback/front_end_test')
 	.success(function(data) {
-   console.log(data);
    $scope.ratings = data.ratings;
 })
 .error(function(data) {
@@ -52,23 +57,21 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
 			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
 		if(param==5)
 			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		$('#rate'+param).popover('show')
-        console.log('mouseHover(' + param + ')');
+		$('#rate'+param).popover('show');
         $scope.hoverRating1 = param;
     };
 
     
     // // this function will be invoked when we will stop hovering over a star while giving rating to the visit
     $scope.mouseLeave1 = function (param) {
-		$('#rate'+param).popover('hide')
-        console.log('mouseLeave(' + param + ')');
+		$('#rate'+param).popover('hide');
         $scope.hoverRating1 = param + '*';
     };
 
    // this method will be invoked when we will submit the review for the visit
  $scope.submit=function()
  {
-	 if($scope.mandatory!="" && $scope.mandatory!=undefined)
+	 if($scope.review.reviewDescription!="" && $scope.review.reviewDescription!=undefined)
 		 {
 	 console.log("in submit");
 	 swal("Your feedback has been recorded.", "Thank You!", "success");
