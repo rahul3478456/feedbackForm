@@ -1,15 +1,18 @@
 'use strict';
 
+//the below create a Angular Js module
 var app = angular.module('myApp', []);
 
+// With the help of the module created in the above step we have created a controller function which will control the div assigned to it.
 app.controller('appController', ['$scope','$http', function ($scope,$http) {
-
-//	$('#exampleModalCenter').modal('toggle');
-	$scope.popoverContent="";
+	
+	//this is used to store the selected rating
     $scope.starRating1 = 0;
+    
+    //this is used to store the rating of the star over which are hovering
     $scope.hoverRating1 = 0;
 	
-		
+	//this post request gets the data according to which ratings needs to be recorded
 	$http.get('https://www.naviadoctors.com/visit_feedback/front_end_test')
 	.success(function(data) {
    console.log(data);
@@ -20,6 +23,7 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
 });
 	
 
+	// this function will be invoked when we will click on a star to give rating to the visit
     $scope.click1 = function (param) {
         console.log('Click(' + param + ')');
 		if(param==1)
@@ -34,6 +38,7 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
 			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
     };
 
+ // this function will be invoked when we will hover over a star to give rating to the visit
     $scope.mouseHover1 = function (param) {
 		
 		
@@ -52,12 +57,15 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
         $scope.hoverRating1 = param;
     };
 
+    
+    // // this function will be invoked when we will stop hovering over a star while giving rating to the visit
     $scope.mouseLeave1 = function (param) {
 		$('#rate'+param).popover('hide')
         console.log('mouseLeave(' + param + ')');
         $scope.hoverRating1 = param + '*';
     };
 
+   // this method will be invoked when we will submit the review for the visit
  $scope.submit=function()
  {
 	 if($scope.mandatory!="" && $scope.mandatory!=undefined)
@@ -69,6 +77,8 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
  
 }]);
 
+
+//Below is a custom directive which will control how we will rate the visit by selecting any number of stars
 app.directive('starRating', function () {
     return {
         scope: {
