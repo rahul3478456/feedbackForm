@@ -71,11 +71,7 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
    // this method will be invoked when we will submit the review for the visit
  $scope.submit=function()
  {
-	 if($scope.review.reviewDescription!="" && $scope.review.reviewDescription!=undefined)
-		 {
-	 console.log("in submit");
-	 swal("Your feedback has been recorded.", "Thank You!", "success");
-		 }
+	 swal("Your feedback has been recorded.", "Thank You!", "success");	
  };
  
 }]);
