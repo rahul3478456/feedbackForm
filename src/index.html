@@ -65,7 +65,7 @@
 				<span><center>
 						<h5>Review your visit</h5>
 					</center></span>
-				<form>
+				<form name="form">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Name</label> <input
 							type="text" class="form-control" ng-model="review.name" id="exampleFormControlInput1"
@@ -85,7 +85,7 @@
 							id="exampleFormControlTextarea1"
 							placeholder="Tell us about your visit" rows="3" required></textarea>
 					</div>
-					<button type="submit" ng-click="submit()">Submit</button>
+					<button type="submit" ng-click="form.$valid && submit()">Submit</button>
 					<button type="button">Skip</button>
 				</form>
 			</div>
