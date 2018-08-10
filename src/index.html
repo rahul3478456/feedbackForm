@@ -45,18 +45,16 @@
 					</center></span>
 
 				<center>
+				<div ng-repeat="obj in invoke">
 					<div star-rating rating="starRating1" read-only="false"
-						max-rating="5" click="click1(param)"
+						max-rating="{{noOfRatings}}" click="click1(param)"
 						mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)"></div>
-					<span ng-show="starRating1==5" class="badge badge-success">{{ratings[5]}}</span><span
-						ng-show="starRating1==4" class="badge badge-success">{{ratings[4]}}</span><span
-						ng-show="starRating1==3" class="badge badge-warning">{{ratings[3]}}</span><span
-						ng-show="starRating1==2" class="badge badge-danger">{{ratings[2]}}</span><span
-						ng-show="starRating1==1" class="badge badge-danger">{{ratings[1]}}</span>
+					<span id="selection" ng-show="starRating1" class="badge badge-success">{{ratings[starRating1]}}</span>
 					<div>
 						<span ng-show="starRating1 != 0" class="badge badge-success">Your
 							rating has been recorded</span>
 
+					</div>
 					</div>
 				</center>
 			</div>
