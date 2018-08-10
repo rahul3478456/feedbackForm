@@ -68,12 +68,12 @@
 				<form>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Name</label> <input
-							type="text" class="form-control" id="exampleFormControlInput1"
+							type="text" class="form-control" ng-model="review.name" id="exampleFormControlInput1"
 							placeholder="Your name here">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Email address</label> <input
-							type="email" class="form-control" id="exampleFormControlInput1"
+							type="email" class="form-control"  ng-model="review.email" id="exampleFormControlInput1"
 							placeholder="name@example.com">
 					</div>
 
@@ -81,7 +81,7 @@
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Your review</label><span
 							class="required">*</span>
-						<textarea ng-model="mandatory" class="form-control"
+						<textarea ng-model="review.reviewDescription" class="form-control"
 							id="exampleFormControlTextarea1"
 							placeholder="Tell us about your visit" rows="3" required></textarea>
 					</div>
