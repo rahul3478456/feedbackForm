@@ -12,51 +12,46 @@ app.controller('appController', ['$scope','$http', function ($scope,$http) {
 		email:"",
 		reviewDescription:"" };
 	
-	//this is used to store the selected rating
-    $scope.starRating1 = 0;
+	
+    $scope.starRating1 = 0; //this is used to store the selected rating
     
-    //this is used to store the rating of the star over which are hovering
-    $scope.hoverRating1 = 0;
+ 
+    $scope.hoverRating1 = 0;    //this is used to store the rating of the star over which are hovering
 	
 	//this post request gets the data according to which ratings needs to be recorded
 	$http.get('https://www.naviadoctors.com/visit_feedback/front_end_test')
 	.success(function(data) {
-   $scope.ratings = data.ratings;
+   $scope.ratings = data.ratings; //Storing the values of comments based on the rating
+   $scope.noOfRatings = Object.keys(data.ratings).length; //Storing the highest value of rating that a user can give
+   $scope.colorSetter = Math.floor($scope.noOfRatings/2); // Setting different color to the selected rating indicator (E.g, Poor ratings will reflect red color and so on)
+ 	$scope.invoke=[1]; //This is to invoke the div containing the directive star rating after the api gets called
 })
 .error(function(data) {
-   // error stuff
+   // error
 });
 	
 
-	// this function will be invoked when we will click on a star to give rating to the visit
+	// this function is used to set color to the selected rating based on its priority when compared to the highest rating available.
     $scope.click1 = function (param) {
-        console.log('Click(' + param + ')');
-		if(param==1)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==2)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==3)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==4)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==5)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
+    	if(param <= $scope.colorSetter)
+    		{
+    		document.getElementById('selection').className = 'badge badge-danger';
+    		}
+    	else if(param >= $scope.noOfRatings-1)
+    		{
+    		document.getElementById('selection').className = 'badge badge-success';
+    		}
+    	else
+    		{
+    		document.getElementById('selection').className = 'badge badge-warning';
+    		}
+    
+		document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);	
     };
 
- // this function will be invoked when we will hover over a star to give rating to the visit
+ // this function will be invoked when we will hover over a star while rating the visit
     $scope.mouseHover1 = function (param) {
-		
-		
-		if(param==1)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==2)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==3)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==4)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
-		if(param==5)
-			document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
+    	document.getElementById('rate'+param).setAttribute('data-content',$scope.ratings[param]);
 		$('#rate'+param).popover('show');
         $scope.hoverRating1 = param;
     };
